@@ -163,9 +163,6 @@ Please test features locally and add unit or integration tests where appropriate
 
 ---
 
-## License
-
-This project is open source and available under the **MIT License**.
 
 ---
 
