@@ -1,66 +1,90 @@
-# Task Management Application
+# Task Management App
 
-A simple and intuitive task management application built with React.js that demonstrates core frontend development skills including component design, state management, and user interaction.
+A simple and intuitive task management application built with **React.js** that demonstrates core frontend development skills such as component design, state management, and user interaction.
+
+---
+
+## Quick overview
+
+* **Purpose:** Lightweight task manager for creating, tracking, and managing daily tasks.
+* **Stack:** React (functional components + hooks), Tailwind CSS, Vite, localStorage for persistence.
+* **Goals:** Clean UI, good UX, responsive layout, and easy extensibility.
+
+---
+
+## Live Demo & Repository
+
+* **Live Demo:** [assignment-snowy-six.vercel.app](https://assignment-snowy-six.vercel.app/)
+* **Source Code:** [GitHub Repository](https://github.com/niteshverma01/assignment-.git)
+
+---
 
 ## Features
 
-### Core Functionality
-- **Task List Display**: View all tasks with title, description, status, and creation date
-- **Add New Tasks**: Create tasks with title and description using a validated form
-- **Task Management**: Mark tasks as complete/incomplete and delete with confirmation
-- **Smart Filtering**: Filter tasks by All, Pending, or Completed status
-- **Data Persistence**: Tasks are automatically saved to localStorage
-- **Statistics Dashboard**: View total, pending, and completed task counts with progress
+### Core
 
-### User Experience
-- Clean, organized layout with visual distinction between task states
-- Responsive design that works seamlessly on mobile and desktop
-- Real-time form validation with helpful error messages
-- Confirmation dialogs for destructive actions
-- Intuitive interface with clear visual feedback
+* **Task list display** with title, description, status (pending/completed), and creation date.
+* **Add tasks** via a validated form (title & description required).
+* **Update task status**: Toggle complete / incomplete.
+* **Delete tasks** with a confirmation dialog.
+* **Filtering**: Show All, Pending, or Completed tasks.
+* **Persistence**: Tasks are saved automatically to `localStorage`.
 
-## Technology Stack
+### UX & Quality
 
-- **React.js** - Frontend framework using functional components
-- **React Hooks** - useState and useEffect for state management
-- **Tailwind CSS** - Utility-first CSS framework for styling
-- **localStorage** - Client-side data persistence
-- **Vite** - Build tool and development server
+* Real-time form validation and helpful error messages.
+* Responsive mobile-first design.
+* Clear visual distinction between task states.
+* Statistics dashboard with total/pending/completed counts and a progress indicator.
 
-## Getting Started
+---
+
+## Getting started
 
 ### Prerequisites
-- Node.js (version 14 or higher)
-- npm or yarn package manager
 
-### Installation
+* Node.js v14 or higher
+* npm (or yarn)
 
-1. Clone the repository:
+### Install & run locally
+
 ```bash
+# clone the repo
 git clone <repository-url>
 cd task
-```
 
-2. Install dependencies:
-```bash
+# install dependencies
 npm install
-```
 
-3. Start the development server:
-```bash
+# start dev server
 npm run dev
 ```
 
-4. Open your browser and navigate to `http://localhost:5173`
+Open your browser at `http://localhost:5173` (Vite's default) after running the dev server.
 
-### Available Scripts
+### Build & preview production
 
-- `npm run dev` - Start development server
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build locally
+```bash
+# build for production
+npm run build
 
-## Project Structure
+# preview the production build locally
+npm run preview
+```
 
+---
+
+## Available scripts
+
+* `npm run dev` — Start development server with hot reloading.
+* `npm run build` — Create an optimized production build.
+* `npm run preview` — Serve the production build locally for testing.
+
+---
+
+## Project structure
+
+```
 task/
 ├── public/
 │   └── vite.svg
@@ -79,105 +103,72 @@ task/
 │   ├── index.css
 │   └── main.jsx
 ├── .gitignore
-├── eslint.config.js
 ├── index.html
 ├── package.json
 ├── README.md
 └── vite.config.js
+```
 
-## Component Architecture
+---
 
-### App.jsx
-- Main application component managing global state
-- Handles task CRUD operations and localStorage persistence
-- Coordinates data flow between child components
+## Component architecture
 
-### TaskForm.jsx
-- Controlled form component for task creation
-- Real-time validation with error handling
-- Clears form after successful submission
+* **App.jsx** — Root component. Manages global state (task list, filter), handles CRUD operations, and syncs with `localStorage`.
+* **Header.jsx** — App title and optional actions (e.g., clear all).
+* **TaskForm.jsx** — Controlled form for creating tasks with validation and user feedback.
+* **TaskList.jsx** — Renders tasks according to the active filter; displays an empty state when no tasks exist.
+* **TaskItem.jsx** — Shows task details, toggle completion, and delete with confirmation.
+* **FilterBar.jsx** — Buttons for switching between All / Pending / Completed filters.
+* **TaskStats.jsx** — Dashboard showing counts and a progress bar.
 
-### TaskList.jsx
-- Renders filtered list of tasks
-- Handles empty state display
-- Maps task data to TaskItem components
+---
 
-### TaskItem.jsx
-- Individual task display and interaction
-- Toggle completion status
-- Delete confirmation dialog
-- Formatted date display
+## Implementation notes
 
-### TaskFilter.jsx
-- Filter button group for task status
-- Active filter highlighting
-- Clean button styling
+### State & data
 
-### TaskStats.jsx
-- Statistics dashboard with task counts
-- Progress bar visualization
-- Responsive grid layout
+* Global state is centered in `App.jsx` using `useState` and `useEffect`.
+* `localStorage` is used to persist tasks. On load, the app restores tasks from `localStorage` and writes back upon changes. Consider adding versioning or migration logic when the data schema evolves.
 
-## Key Features Implementation
+### Form validation
 
-### State Management
-- Uses React hooks for clean state management
-- Centralized state in App component
-- Proper state updates with immutable patterns
+* Title and description are required.
+* Enforce a sensible minimum length for fields and provide inline error messages.
 
-### Data Persistence
-- Automatic localStorage integration
-- Error handling for storage operations
-- Data restoration on application load
+### Performance
 
-### Form Validation
-- Required field validation
-- Minimum character length requirements
-- Real-time error feedback
-- User-friendly error messages
+* Use `key` props when mapping lists to avoid unnecessary re-renders.
+* Keep components small and focused; lift state only when needed.
 
-### Responsive Design
-- Mobile-first approach
-- Flexible grid layouts
-- Optimized for various screen sizes
-- Touch-friendly interface elements
+---
 
-## Browser Support
+## Browser support
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+* Modern browsers: latest Chrome, Firefox, Safari, and Edge. The app is client-side and relies on browser `localStorage`.
 
-## Performance Considerations
+---
 
-- Efficient re-rendering with proper key props
-- Minimal state updates
-- Optimized component structure
-- Lightweight dependencies
 
-## Future Enhancements
 
-Potential improvements that could be added:
-- Drag and drop task reordering
-- Task categories or tags
-- Due dates with visual indicators
-- Search functionality
-- Export/import capabilities
-- Dark mode theme
+---
 
 ## Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+1. Fork the repository.
+2. Create a feature branch: `git checkout -b feature/my-change`.
+3. Commit your changes and push: `git push origin feature/my-change`.
+4. Open a Pull Request describing your changes.
+
+Please test features locally and add unit or integration tests where appropriate.
+
+---
 
 ## License
 
-This project is open source and available under the MIT License.
+This project is open source and available under the **MIT License**.
+
+---
 
 ## Contact
 
-For questions or feedback about this project, please reach out through the repository issues page.
+If you have questions or feedback, please open an issue on the repository.
